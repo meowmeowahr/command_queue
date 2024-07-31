@@ -1,4 +1,5 @@
 import threading
+import multiprocessing
 from typing import Callable
 
 from loguru import logger
@@ -33,6 +34,11 @@ class BaseCommand:
 class ThreadedCommand(BaseCommand):
     def launch(self):
         threading.Thread(target=self._command, daemon=True).start()
+
+
+class MultiprocessingCommand(BaseCommand):
+    def launch(self):
+        multiprocessing.Process(target=self._command, daemon=True).start()
 
 
 class FunctionCommand(BaseCommand):
