@@ -30,6 +30,11 @@ class BaseCommand:
         return self._command
 
 
+class ThreadedCommand(BaseCommand):
+    def launch(self):
+        threading.Thread(target=self._command, daemon=True).start()
+
+
 class FunctionCommand(BaseCommand):
     def __init__(self, func: Callable) -> None:
         super().__init__()
