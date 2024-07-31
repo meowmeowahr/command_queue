@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "command_queue"
+version = "0.0.1"
+authors = [
+  { name="meowmeowahr" },
+]
+description = "A Command Queue for Python"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "loguru~=0.7.2"
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/meowmeowahr/command_queue"
+Issues = "https://github.com/meowmeowahr/command_queue/issues"
