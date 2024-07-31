@@ -44,8 +44,9 @@ class CommandQueue:
                         "If you are trying to add a function, wrap it in the FunctionCommand class instead."
                         f"Type: {str(type(item))}: {item}"
                     )
-
+                logger.trace(f"Running command {item}")
                 item.launch()  # Run command
+                logger.trace(f"Finished running command {item}")
 
     def spin(self, loop_rate: int, until_empty=False):
         """
