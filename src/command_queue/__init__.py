@@ -12,7 +12,7 @@ from loguru import logger
 from .commands import BaseCommand as _BaseCommand
 
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 
 @dataclass
