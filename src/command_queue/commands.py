@@ -3,6 +3,7 @@ from typing import Callable
 
 from loguru import logger
 
+
 class BaseCommand:
     """
     The base command class for the command queue, does nothing if used directly.
@@ -21,7 +22,7 @@ class BaseCommand:
     def command(self, callback: Callable) -> None:
         self._command = callback
 
-    def _launch(self):
+    def launch(self):
         self._command()
 
     @property
@@ -39,13 +40,13 @@ class ParallelCommandGroup(BaseCommand):
     def __init__(self, *args: BaseCommand) -> None:
         super().__init__()
         self.commands = args
-        self.command = self._launch
+        self.command = self.launch
 
-    def _launch(self):
+    def launch(self):
         threads: list[threading.Thread] = []
 
         for command in self.commands:
-            thread = threading.Thread(target=command._launch, name=f"ParallelCommandGroup thread for {command}")
+            thread = threading.Thread(target=command.launch, name=f"ParallelCommandGroup thread for {command}")
             thread.start()
             threads.append(thread)
 

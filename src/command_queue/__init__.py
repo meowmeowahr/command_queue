@@ -45,7 +45,7 @@ class CommandQueue:
                         f"Type: {str(type(item))}: {item}"
                     )
 
-                item._launch()  # Run command
+                item.launch()  # Run command
 
     def spin(self, loop_rate: int, until_empty=False):
         """
